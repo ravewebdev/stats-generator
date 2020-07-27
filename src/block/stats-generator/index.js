@@ -27,13 +27,7 @@ registerBlockType( 'rave/stats-generator', {
 	supports: {
 		html: false,
 	},
-	attributes: {
-		content: {
-			type: 'array',
-			source: 'children',
-			selector: 'p',
-		},
-	},
+	attributes: {},
 	edit,
 	save,
 } );

@@ -3,11 +3,8 @@
  */
 
 const {
-	i18n: {
-		__,
-	},
 	blockEditor: {
-		RichText,
+		InnerBlocks,
 	},
 } = wp;
 
@@ -22,36 +19,13 @@ const {
  */
 const Edit = ( props ) => {
 	const {
-		attributes: {
-			content,
-		},
 		className,
-		setAttributes,
 	} = props;
 
-	/**
-	 * Handle updating attributes.
-	 *
-	 * @author R A Van Epps <rave@ravanepps.com>
-	 * @since  1.0.0
-	 *
-	 * @param  {string} attribute Attribute name.
-	 * @param  {mixed}  value     New value for attribute.
-	 */
-	const onUpdate = ( attribute, value ) => {
-		setAttributes( {
-			[ attribute ]: value,
-		} );
-	};
-
 	return (
-		<RichText
-			tagName="p"
-			className={ className }
-			onChange={ onUpdate }
-			value={ content }
-			placeholder={ __( 'Rave Stats Generator Demo...', 'stats-generator' ) }
-		/>
+		<div className={ className }>
+			<InnerBlocks { ...innerBlocksProps } />
+		</div>
 	);
 };
 
