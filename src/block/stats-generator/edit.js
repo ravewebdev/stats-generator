@@ -5,10 +5,69 @@
 import statDice from './statDice';
 
 const {
+	i18n: {
+		__,
+	},
 	blockEditor: {
 		InnerBlocks,
 	},
 } = wp;
+
+/**
+ * Get stat heading block props based on counter value.
+ *
+ * @author R A Van Epps <rave@ravanepps.com>
+ * @since  1.0.0
+ *
+ * @param  {number} count Counter value.
+ * @return {Object}       Stat heading props.
+ */
+const getDiceHeadingProps = ( count ) => {
+	let heading = '',
+		abbr = '';
+
+	switch ( count ) {
+		case 0:
+			heading = __( 'Strength', 'stats-generator' );
+			abbr = __( 'STR', 'stats-generator' );
+			break;
+
+		case 1:
+			heading = __( 'Dexterity', 'stats-generator' );
+			abbr = __( 'DEX', 'stats-generator' );
+			break;
+
+		case 2:
+			heading = __( 'Constitution', 'stats-generator' );
+			abbr = __( 'CON', 'stats-generator' );
+			break;
+
+		case 3:
+			heading = __( 'Intelligence', 'stats-generator' );
+			abbr = __( 'INT', 'stats-generator' );
+			break;
+
+		case 4:
+			heading = __( 'Wisdom', 'stats-generator' );
+			abbr = __( 'WIS', 'stats-generator' );
+			break;
+
+		case 5:
+			heading = __( 'Charisma', 'stats-generator' );
+			abbr = __( 'CHA', 'stats-generator' );
+			break;
+	}
+
+	if ( ! heading.length ) {
+		return {};
+	}
+
+	return {
+		className: `ability ${ heading.toLowerCase() }`,
+		content: `${ heading } (${ abbr })`,
+		level: '4',
+	};
+};
 
 /**
  * Set up InnerBlocks template prop.
@@ -22,6 +81,7 @@ const getInnerBlocksTemplate = () => {
 	const template = [];
 
 	for ( let i = 0; 6 > i; i++ ) {
+		template.push( [ 'core/heading', getDiceHeadingProps( i ) ] );
 		template.push( [ ...statDice ] );
 	}
 
