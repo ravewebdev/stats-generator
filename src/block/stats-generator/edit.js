@@ -4,6 +4,8 @@
 
 import statDice from './statDice';
 
+import './editor.scss';
+
 const {
 	i18n: {
 		__,
