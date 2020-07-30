@@ -67,7 +67,7 @@ const getDiceHeadingProps = ( count ) => {
 	return {
 		className: `ability ${ heading.toLowerCase() }`,
 		content: `${ heading } (${ abbr })`,
-		level: '4',
+		level: 4,
 	};
 };
 
