@@ -13,6 +13,9 @@ const {
 	blockEditor: {
 		InnerBlocks,
 	},
+	hooks: {
+		addFilter,
+	},
 } = wp;
 
 /**
@@ -110,6 +113,9 @@ const Edit = ( props ) => {
 	const {
 		className,
 	} = props;
+
+	// Disable dice roller settings in admin.
+	addFilter( 'rave.diceRoller.showSettings', 'rave.statsGenerator.disableSettings', () => false );
 
 	return (
 		<div className={ className }>
