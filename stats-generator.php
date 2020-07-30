@@ -71,9 +71,10 @@ function register_block() {
 
 	// Register block with WordPress.
 	register_block_type( 'rave/stats-generator', array(
-		'editor_script' => 'rave-stats-generator-editor-script',
-		'editor_style'  => 'rave-stats-generator-editor-style',
-		'style'         => 'rave-stats-generator-style',
+		'editor_script'   => 'rave-stats-generator-editor-script',
+		'editor_style'    => 'rave-stats-generator-editor-style',
+		'style'           => 'rave-stats-generator-style',
+		'render_callback' => __NAMESPACE__ . '\render_block',
 	) );
 
 	// Register frontend script.
@@ -88,3 +89,6 @@ function register_block() {
 	}
 }
 add_action( 'init', __NAMESPACE__ . '\register_block' );
+
+// Load frontend render via PHP.
+require_once plugin_dir_path( __FILE__ ) . '/includes/frontend.php';

@@ -23,9 +23,7 @@ const Save = ( props ) => {
 	} = props;
 
 	return (
-		<div className={ className }>
-			<InnerBlocks.Content />
-		</div>
+		<InnerBlocks.Content />
 	);
 };
 
